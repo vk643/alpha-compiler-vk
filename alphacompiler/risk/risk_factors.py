@@ -130,7 +130,7 @@ def get_factor_returns(alpha_str, bundle, data_dates, run_dates):
     my_pipeline = make_pipeline()
 
     results = spe.run_pipeline(my_pipeline, run_dates[0], run_dates[1])
-    print results.head()
+    print (results.head())
 
     # mean returns of the biggest/smallest by market cap
     R_biggest = results[results.biggest]['returns'].groupby(level=0).mean()
@@ -195,7 +195,7 @@ def calc_exposures_to_factor(alpha_str, bundle, data_dates, run_dates):
 
     # fit OLS model
     result = sm.OLS(y_inlier, x_inlier).fit()
-    print "result.rsquared: ", result.rsquared
+    print ("result.rsquared: ", result.rsquared)
 
     return result.params, result.rsquared
 
@@ -306,13 +306,13 @@ def calc_exposures_to_equities(equities_of_interest, bundle, data_dates, run_dat
     # get factor data, used dummy factor
     F = get_factor_returns("close", bundle, data_dates, run_dates)
     # R is DF with stocks as columns, dates as rows
-    print 'The number of timestamps in F is {} from {} to {}.'.format(F.shape[0], run_dates[0], run_dates[1])
+    print ('The number of timestamps in F is {} from {} to {}.'.format(F.shape[0], run_dates[0], run_dates[1]))
 
     R = get_equity_returns(bundle, data_dates, run_dates)
     # R is DF with stocks as columns, dates as rows
 
-    print "The universe we define includes {} assets.".format(R.shape[1])
-    print 'The number of timestamps in R is {} from {} to {}.'.format(R.shape[0], run_dates[0], run_dates[1])
+    print ("The universe we define includes {} assets.".format(R.shape[1]))
+    print ('The number of timestamps in R is {} from {} to {}.'.format(R.shape[0], run_dates[0], run_dates[1]))
     assets = R.columns
 
     x = sm.add_constant(F.drop(['MyReturns'], axis=1))  # add a column of 1s to F, and drop dummy column
@@ -328,9 +328,9 @@ def calc_exposures_to_equities(equities_of_interest, bundle, data_dates, run_dat
 
     # mask = (sector_returns.index >= R.index[0]) & (sector_returns.index <= R.index[-1])
     sector_returns = sector_returns.loc[R.index]
-    print 'The number of timestamps in sector_returns is {} from {} to {}'.format(sector_returns.shape[0],
+    print ('The number of timestamps in sector_returns is {} from {} to {}'.format(sector_returns.shape[0],
                                                                                   sector_returns.index[0],
-                                                                                  sector_returns.index[-1])
+                                                                                  sector_returns.index[-1]))
 
     for i in assets:  # iterate over all the assets
         print('calculating exposures to: {}'.format(i))

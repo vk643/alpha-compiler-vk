@@ -60,7 +60,9 @@ class SparseDataFactor(CustomFactor):
 
     def cold_start(self, today, assets):
         if self.data is None:
-            self.data = np.load(self.data_path)
+            # need the change allow_pickle=True due to allow_pickle
+            # default value change after numpy upgrade
+            self.data = np.load(self.data_path, allow_pickle=True)
 
         self.M = self.data.date.shape[1]
 

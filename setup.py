@@ -2,11 +2,12 @@
 
 from distutils.core import setup
 
-setup(name='Alpha Compiler',
-      version='0.1',
+setup(name='alpha-compiler-vk',
+      version='0.1a',
       description='Python tools for quantitative finance',
       author='Peter Harrington',
       author_email='peter.b.harrington@gmail.com',
+      maintainer='Vyacheslav Klyuchnikov',
       url='https://www.alphacompiler.com/',
       packages=['alphacompiler',
           'alphacompiler.util', 

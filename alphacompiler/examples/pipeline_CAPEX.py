@@ -5,12 +5,12 @@ the bottom 3 each day.
 from six import viewkeys
 from zipline.api import (
     attach_pipeline,
-    date_rules,
     order_target_percent,
     pipeline_output,
     record,
     schedule_function,
 )
+from zipline.utils.events import date_rules
 from zipline.pipeline import Pipeline
 
 from alphacompiler.data.sf1_fundamentals import Fundamentals
@@ -36,12 +36,12 @@ def make_pipeline():
 
 
 def rebalance(context, data):
-    print data.current_dt
+    print (data.current_dt)
 
     # Pipeline data will be a dataframe with boolean columns named 'longs' and
     # 'shorts'.
     pipeline_data = context.pipeline_data
-    print pipeline_data.head()
+    print (pipeline_data.head())
     all_assets = pipeline_data.index
 
     longs = all_assets[pipeline_data.longs]
