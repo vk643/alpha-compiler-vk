@@ -182,9 +182,9 @@ def download_all ():
     this is the top-level executor of the fundamentals download - just downloads everything since 2007
     you may want to schedule download_all to be executed daily within out-of-market hours
     """
+    StderrHandler().push_application()
     data = download()
     return data
 
 if __name__ == '__main__':
-    StderrHandler().push_application()
     download_all()
