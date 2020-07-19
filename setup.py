@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='alpha-compiler-vk',
-      version='0.1.2.0',
+      version='0.1.3',
       description='Python tools for quantitative finance. [VK branch]',
       author='Peter Harrington',
       author_email='peter.b.harrington@gmail.com',
